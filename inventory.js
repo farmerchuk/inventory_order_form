@@ -13,7 +13,7 @@ var inventory;
 
     cacheTemplate: function() {
       var $temp = $('#inventory_item').remove();
-      this.template = $temp.html();
+      this.template = Handlebars.compile($temp.html());
     },
 
     nextId: function() {
@@ -44,7 +44,7 @@ var inventory;
     },
 
     addItemToHtml: function() {
-      var templateWithId = this.template.replace(/ID/g, currentId);
+      var templateWithId = this.template({ id: currentId });
       $('#inventory').append(templateWithId);
     },
 
